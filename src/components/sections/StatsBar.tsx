@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 
 const stats = [
-    { value: "+500", label: "Pacientes Atendidos" },
+    { value: "+1.000", label: "Pacientes Atendidos" },
     { value: "5+", label: "Anos de Experiência" },
     { value: "4", label: "Especialidades Integradas" },
 ];

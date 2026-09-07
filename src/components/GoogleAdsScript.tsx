@@ -32,6 +32,15 @@ export function GoogleAdsScript() {
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
           gtag('config', '${GOOGLE_ADS_ID}');
+
+          // Captura imediata de UTMs e GCLID no sessionStorage
+          try {
+            var params = new URLSearchParams(window.location.search);
+            ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'gclid'].forEach(function(k) {
+              var v = params.get(k);
+              if (v) sessionStorage.setItem('salvus_' + k, v);
+            });
+          } catch(e) {}
         `}
       </Script>
       <Script

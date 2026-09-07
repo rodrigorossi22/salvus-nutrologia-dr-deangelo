@@ -7,7 +7,7 @@ export function AuthoritySection() {
         "Pós-graduado em Nutrologia (ABRAN)",
         "Pós-graduado em Ciências da Obesidade e Sarcopenia",
         "Membro da ABESO (Assoc. Bras. para Estudo da Obesidade)",
-        "Pós-graduando em Medicina do Esporte — Hospital Albert Einstein",
+        "Pós-graduado em Medicina do Esporte — Hospital Albert Einstein",
     ];
 
     return (

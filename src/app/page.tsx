@@ -5,6 +5,7 @@ import { JourneySection } from "@/components/sections/JourneySection";
 import { AuthoritySection } from "@/components/sections/AuthoritySection";
 import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { FinalCTASection } from "@/components/sections/FinalCTASection";
+import { FloatingConcierge } from "@/components/FloatingConcierge";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <AuthoritySection />
       <TestimonialsSection />
       <FinalCTASection />
+      <FloatingConcierge />
     </main>
   );
 }

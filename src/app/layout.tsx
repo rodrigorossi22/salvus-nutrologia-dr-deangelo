@@ -12,6 +12,8 @@ const playfair = Playfair_Display({
   subsets: ["latin"],
 });
 
+import { GoogleAdsScript } from "@/components/GoogleAdsScript";
+
 export const metadata: Metadata = {
   title: "Clínica Salvus | Nutrologia Dr. Deangelo",
   description: "Sua saúde não aceita protocolos genéricos. Nutrologia focada em Emagrecimento, Hipertrofia, Reposição Hormonal e Longevidade.",
@@ -25,6 +27,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className={`${inter.variable} ${playfair.variable} scroll-smooth`}>
       <body className="antialiased bg-stone-950 text-stone-100">
+        <GoogleAdsScript />
         {children}
       </body>
     </html>

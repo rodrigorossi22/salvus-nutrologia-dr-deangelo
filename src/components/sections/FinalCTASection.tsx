@@ -1,10 +1,24 @@
-import { Button } from "@/components/ui/button";
+"use client";
+
 import { MessageCircle } from "lucide-react";
+import { getStoredUtmSummary } from "@/hooks/useUtmTracking";
 
 export function FinalCTASection() {
-    const whatsappNumber = "5511949872408";
-    const message = "Olá! Fiz a avaliação no site e gostaria de saber como funciona a consulta com o Dr. Deangelo Lima.";
-    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+    const whatsappNumber = "5511948445629";
+    const baseMessage = "Olá! Gostaria de saber mais sobre a consulta de Nutrologia e Longevidade com o Dr. Deangelo Lima.";
+
+    const handleWhatsAppClick = () => {
+        if (typeof window !== "undefined" && typeof window.gtag === "function") {
+            window.gtag("event", "whatsapp_concierge_click", {
+                event_category: "engagement",
+                event_label: "final_cta_button",
+            });
+        }
+        const utmRef = getStoredUtmSummary();
+        const fullMessage = `${baseMessage}${utmRef}`;
+        const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(fullMessage)}`;
+        window.open(url, "_blank", "noopener,noreferrer");
+    };
 
     return (
         <section className="py-24 bg-stone-950 relative overflow-hidden">
@@ -25,17 +39,20 @@ export function FinalCTASection() {
                     Av. Bernardino de Campos, 327 · Sala 13 · Paraíso · São Paulo
                 </p>
 
-                <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="inline-block">
-                    <Button size="xl" className="bg-green-700 hover:bg-green-600 text-white border border-green-600/50 hover:border-green-400/50 shadow-[0_0_30px_rgba(22,163,74,0.2)] hover:shadow-[0_0_40px_rgba(22,163,74,0.4)] transition-all duration-300 flex items-center gap-3 text-lg px-8 tracking-wide">
-                        <MessageCircle className="w-6 h-6" />
-                        Agendar Minha Consulta
-                    </Button>
-                </a>
+                <button
+                    onClick={handleWhatsAppClick}
+                    className="inline-flex items-center justify-center gap-3 h-14 px-10 rounded-xl font-semibold uppercase tracking-wider text-stone-950 bg-gradient-to-r from-[#C5A059] to-[#D4B06A] hover:brightness-110 shadow-[0_0_35px_rgba(197,160,89,0.35)] transition-all duration-300 text-base md:text-lg border border-[#C5A059]/50 cursor-pointer"
+                >
+                    <MessageCircle className="w-6 h-6" />
+                    Agendar Minha Consulta
+                </button>
 
-                <p className="mt-6 text-stone-600 text-sm">Sem compromisso — respondemos em até 24h úteis.</p>
+                <p className="mt-6 text-stone-400 text-sm">
+                    Atendimento prioritário e confidencial via Concierge Salvus.
+                </p>
 
                 {/* Footnote */}
-                <p className="mt-12 text-sm text-stone-700 font-medium tracking-wide">
+                <p className="mt-12 text-sm text-stone-600 font-medium tracking-wide">
                     Clínica Salvus © {new Date().getFullYear()} – Triple A Health Care <br />
                     Dr. Deangelo Lima · CRM 171085/SP
                 </p>
